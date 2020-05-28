@@ -15,28 +15,21 @@ public class Tournament implements CommandLineRunner {
     private int playsNumber;
 
     private GameService gameService;
+    private RandomPlayer randomPlayer;
+    private RockPlayer rockPlayer;
 
     @Autowired
-    public Tournament(GameService gameService) {
+    public Tournament(GameService gameService, RandomPlayer randomPlayer, RockPlayer rockPlayer) {
         this.gameService = gameService;
+        this.randomPlayer = randomPlayer;
+        this.rockPlayer = rockPlayer;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        Player randomPlayer = Player.RANDOM_PLAYER;
-        Player stubbornRockPlayer = Player.STUBBORN_ROCK_PLAYER;
-
-        this.play(randomPlayer, stubbornRockPlayer);
-    }
-
-    public void play(Player firstPlayer, Player secondPlayer) {
-
-
         for(int i=0; i<playsNumber; i++){
-            gameService.game(firstPlayer.nextMove(), secondPlayer.nextMove());
+            gameService.game(randomPlayer, rockPlayer);
         }
-
-
     }
 
 }

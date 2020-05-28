@@ -1,16 +1,10 @@
 package com.dlinkddns.mpolonio.lottolandroshambo.model;
 
-public enum Player {
-    RANDOM_PLAYER{
-        @Override
-        public Move nextMove() {
-            return Move.randomMove();
-        }
-    },
-    STUBBORN_ROCK_PLAYER{
-        @Override
-        public Move nextMove() { return Move.ROCK; }
-    };
+import com.dlinkddns.mpolonio.lottolandroshambo.service.StrategyService;
+
+public abstract class Player {
+
+    StrategyService strategyService;
 
     public abstract Move nextMove();
 }

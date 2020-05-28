@@ -1,7 +1,5 @@
 package com.dlinkddns.mpolonio.lottolandroshambo.model;
 
-import java.util.Random;
-
 public enum Move {
     ROCK {
         @Override
@@ -23,11 +21,5 @@ public enum Move {
     };
 
     public abstract boolean beats(Move move);
-
-    public static Move randomMove(){
-        Random random = new Random();
-        int randomInt = random.nextInt(Move.values().length);
-        return Move.values()[randomInt];
-    }
 }
 
