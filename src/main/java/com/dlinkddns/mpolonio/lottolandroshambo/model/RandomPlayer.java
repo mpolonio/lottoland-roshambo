@@ -9,6 +9,7 @@ public class RandomPlayer extends Player{
 
     @Autowired
     public RandomPlayer(StrategyService strategyService) {
+        this.name = RandomPlayer.class.getSimpleName();
         this.strategyService = strategyService;
     }
 

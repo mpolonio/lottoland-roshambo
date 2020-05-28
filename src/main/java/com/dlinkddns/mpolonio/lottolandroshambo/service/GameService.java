@@ -1,15 +1,24 @@
 package com.dlinkddns.mpolonio.lottolandroshambo.service;
 
+import com.dlinkddns.mpolonio.lottolandroshambo.model.Game;
 import com.dlinkddns.mpolonio.lottolandroshambo.model.Player;
-import com.dlinkddns.mpolonio.lottolandroshambo.model.GameResult;
+import com.dlinkddns.mpolonio.lottolandroshambo.repository.GameRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class GameService {
 
-    public void game(Player firstPlayer, Player secondPlayer) {
+    private GameRepository gameRepository;
+
+    @Autowired
+    public GameService(GameRepository gameRepository){
+        this.gameRepository = gameRepository;
+    }
+
+    public void game(int gameId, Player firstPlayer, Player secondPlayer) {
         if (firstPlayer == null || secondPlayer == null) {
             String msg = String
                     .format("Players cannot be null (First Player: %s, Second Player: %s)!",
@@ -17,15 +26,8 @@ public class GameService {
             throw new IllegalArgumentException(msg);
         }
 
-        GameResult gameResult = GameResult.DRAW;
-
-        if (firstPlayer.nextMove().beats(secondPlayer.nextMove())) {
-            gameResult = GameResult.FIRST_PLAYER;
-        } else if (secondPlayer.nextMove().beats(firstPlayer.nextMove())){
-            gameResult = GameResult.SECOND_PLAYER;
-        }
-
-        log.info("Game result: {}", gameResult);
+        Game game = new Game(gameId, firstPlayer, secondPlayer);
+        gameRepository.save(game);
 
     }
 }

@@ -9,6 +9,7 @@ public class RockPlayer extends Player {
 
     @Autowired
     public RockPlayer(StrategyService strategyService) {
+        this.name = RockPlayer.class.getSimpleName();
         this.strategyService = strategyService;
     }
 
