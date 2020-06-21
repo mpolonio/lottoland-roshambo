@@ -4,7 +4,7 @@ Date: 2020-06-20
 
 ## Status
 
-Accepted
+Superceded by [2. Discarded after no native Windows support](0002-discarded-after-no-native-windows-support.md)
 
 ## Context
 
