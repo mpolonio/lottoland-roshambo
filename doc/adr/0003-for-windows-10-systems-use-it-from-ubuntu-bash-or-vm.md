@@ -4,9 +4,9 @@ Date: 2020-06-21
 
 ## Status
 
-Accepted
-
 ADR requirements were initially unknown [1. Record architecture decisions](0001-record-architecture-decisions.md)
+
+Superceded by [4. Windows 10 ADR native support](0004-windows-10-adr-native-support.md)
 
 ## Context
 
